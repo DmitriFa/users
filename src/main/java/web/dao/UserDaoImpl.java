@@ -13,64 +13,64 @@ import java.util.List;
 
 @Repository
 public class UserDaoImpl implements UserDao {
-    private SessionFactory sessionFactory;
+   // private SessionFactory sessionFactory;
 
-    @Autowired
-   public void setSessionFactory(SessionFactory sessionFactory) {
-      this.sessionFactory = sessionFactory;
-  }
+ //   @Autowired
+ //  public void setSessionFactory(SessionFactory sessionFactory) {
+  //    this.sessionFactory = sessionFactory;
+  //}
 
-  // @PersistenceContext
-  // EntityManager em;
+   @PersistenceContext
+   EntityManager em;
 
     @Override
     @SuppressWarnings("unchecked")
     public List<User> allUsers(int page) {
-     // Session session = em.unwrap(Session.class);
-        Session session = sessionFactory.getCurrentSession();
+      Session session = em.unwrap(Session.class);
+      //  Session session = sessionFactory.getCurrentSession();
         return session.createQuery("from User").setFirstResult(10 * (page - 1)).setMaxResults(10).list();
     }
 
     @Override
     public void add(User user) {
-     //  Session session = em.unwrap(Session.class);
-    Session session = sessionFactory.getCurrentSession();
+       Session session = em.unwrap(Session.class);
+   // Session session = sessionFactory.getCurrentSession();
       session.persist(user);
     }
 
     @Override
     public void delete(User user){
-       Session session = sessionFactory.getCurrentSession();
-     // Session session = em.unwrap(Session.class);
+      // Session session = sessionFactory.getCurrentSession();
+      Session session = em.unwrap(Session.class);
        session.delete(user);
 
     }
 
     @Override
     public void edit(User user) {
-       Session session = sessionFactory.getCurrentSession();
-     // Session session = em.unwrap(Session.class);
+      // Session session = sessionFactory.getCurrentSession();
+      Session session = em.unwrap(Session.class);
         session.update(user);
     }
 
     @Override
     public User getById(int id) {
-      Session session = sessionFactory.getCurrentSession();
-    // Session session = em.unwrap(Session.class);
+     // Session session = sessionFactory.getCurrentSession();
+     Session session = em.unwrap(Session.class);
         return session.get(User.class, id);
     }
 
     @Override
     public int usersCount() {
-       Session session = sessionFactory.getCurrentSession();
-     //  Session session = em.unwrap(Session.class);
+     //  Session session = sessionFactory.getCurrentSession();
+       Session session = em.unwrap(Session.class);
         return session.createQuery("select count(*) from User", Number.class).getSingleResult().intValue();
     }
 
     @Override
     public boolean checkTitle(String name) {
-     Session session = sessionFactory.getCurrentSession();
-    // Session session = em.unwrap(Session.class);
+   //  Session session = sessionFactory.getCurrentSession();
+     Session session = em.unwrap(Session.class);
         Query query;
         query = session.createQuery("from User where name = :name");
         query.setParameter("name", name);

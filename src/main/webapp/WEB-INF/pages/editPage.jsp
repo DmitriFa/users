@@ -25,7 +25,7 @@
         </c:otherwise>
     </c:choose>
     <p><input type="text" name="name" placeholder="name" value="${user.name}" maxlength="100" required>
-    <p><input type="text" name="lastName" placeholder="lastName" value="${user.lastName}" maxlength="20" required>
+    <p><input type="text" name="lastName" placeholder="lastname" value="${user.lastName}" maxlength="20" required>
     <p><input type="number" name="age" placeholder="age" value="${user.age}" required>
     <p>
         <c:set value="add" var="add"/>
