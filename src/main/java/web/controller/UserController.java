@@ -83,8 +83,8 @@ public class UserController {
     @RequestMapping(value="/delete/{id}", method = RequestMethod.GET)
     public ModelAndView deleteUser(@PathVariable("id") int id)  {
         ModelAndView modelAndView = new ModelAndView();
-        int filmsCount = userService.usersCount();
-        int page = ((filmsCount - 1) % 10 == 0 && filmsCount > 10 && this.page == (filmsCount + 9)/10) ?
+        int usersCount = userService.usersCount();
+        int page = ((usersCount - 1) % 10 == 0 && usersCount > 10 && this.page == (usersCount + 9)/10) ?
                 this.page - 1 : this.page;
         modelAndView.setViewName("redirect:/");
         modelAndView.addObject("page", page);
