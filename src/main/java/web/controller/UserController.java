@@ -45,12 +45,12 @@ public class UserController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ModelAndView addFilm(@ModelAttribute("user") User user) {
         ModelAndView modelAndView = new ModelAndView();
-        if (userService.checkTitle(user.getTitle())) {
+        if (userService.checkTitle(user.getName())) {
             modelAndView.setViewName("redirect:/");
             modelAndView.addObject("page", page);
             userService.add(user);
         } else {
-            modelAndView.addObject("message","part with title \"" + user.getTitle() + "\" already exists");
+            modelAndView.addObject("message","part with title \"" + user.getName() + "\" already exists");
             modelAndView.setViewName("redirect:/");
         }
         return modelAndView;
@@ -69,12 +69,12 @@ public class UserController {
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public ModelAndView editUser(@ModelAttribute("user") User user) {
         ModelAndView modelAndView = new ModelAndView();
-        if (userService.checkTitle(user.getTitle()) || userService.getById(user.getId()).getTitle().equals(user.getTitle())) {
+        if (userService.checkTitle(user.getName()) || userService.getById(user.getId()).getName().equals(user.getName())) {
             modelAndView.setViewName("redirect:/");
             modelAndView.addObject("page", page);
             userService.edit(user);
         } else {
-            modelAndView.addObject("message","part with title \"" + user.getTitle() + "\" already exists");
+            modelAndView.addObject("message","part with title \"" + user.getName() + "\" already exists");
             modelAndView.setViewName("redirect:/edit/" +  + user.getId());
         }
         return modelAndView;

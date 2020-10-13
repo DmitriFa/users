@@ -14,5 +14,5 @@ public interface UserDao {
 
     int usersCount();
 
-    boolean checkTitle(String title);
+    boolean checkTitle(String name);
 }

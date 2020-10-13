@@ -11,14 +11,14 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "title")
-    private String title;
+    @Column(name = "name")
+    private String name;
 
-    @Column(name = "year")
-    private int year;
+    @Column(name = "age")
+    private int age;
 
-    @Column(name = "genre")
-    private String genre;
+    @Column(name = "lastname")
+    private String lastName;
 
     public int getId() {
         return id;
@@ -28,35 +28,35 @@ public class User {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getYear() {
-        return year;
+    public int getAge() {
+        return age;
     }
 
-    public void setYear(
-            int year) {
-        this.year = year;
+    public void setAge(
+            int age) {
+        this.age = age;
     }
-    public String getGenre() {
-        return genre;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setGenre(String genre) {
-        this.genre = genre;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
 
 
     @Override
     public String toString() {
-        return id + " " + title + " " + year + " "+ genre + " " ;
+        return id + " " + name + " " + lastName + " "+ age + " " ;
     }
 }
 

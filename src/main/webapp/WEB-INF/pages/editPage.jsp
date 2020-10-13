@@ -3,7 +3,7 @@
 <html>
 <head>
     <c:choose>
-        <c:when test="${empty user.title}">
+        <c:when test="${empty user.name}">
             <title>Add</title>
         </c:when>
         <c:otherwise>
@@ -14,9 +14,9 @@
 <body>
 <c:url value="/add" var="addUrl"/>
 <c:url value="/edit" var="editUrl"/>
-<form action="${empty user.title ? addUrl : editUrl}" name="user" method="POST">
+<form action="${empty user.name ? addUrl : editUrl}" name="user" method="POST">
     <c:choose>
-        <c:when test="${!empty user.title}">
+        <c:when test="${!empty user.name}">
             <p>Edit user</p>
             <input type="hidden" name="id" value="${user.id}">
         </c:when>
@@ -24,13 +24,13 @@
             <p>Add new user</p>
         </c:otherwise>
     </c:choose>
-    <p><input type="text" name="title" placeholder="title" value="${user.title}" maxlength="100" required>
-    <p><input type="number" name="year" placeholder="year" value="${user.year}" required>
-    <p><input type="text" name="genre" placeholder="genre" value="${user.genre}" maxlength="20" required>
+    <p><input type="text" name="title" placeholder="title" value="${user.name}" maxlength="100" required>
+    <p><input type="text" name="year" placeholder="year" value="${user.lastName}" required>
+    <p><input type="number" name="genre" placeholder="genre" value="${user.age}" maxlength="20" required>
     <p>
         <c:set value="add" var="add"/>
         <c:set value="edit" var="edit"/>
-        <input type="submit" value="${empty user.title ? add : edit}">
+        <input type="submit" value="${empty user.name ? add : edit}">
     </p>
     <p>${message}</p>
 </form>
