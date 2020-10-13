@@ -24,9 +24,9 @@
             <p>Add new user</p>
         </c:otherwise>
     </c:choose>
-    <p><input type="text" name="title" placeholder="title" value="${user.name}" maxlength="100" required>
-    <p><input type="text" name="year" placeholder="year" value="${user.lastName}" required>
-    <p><input type="number" name="genre" placeholder="genre" value="${user.age}" maxlength="20" required>
+    <p><input type="text" name="name" placeholder="name" value="${user.name}" maxlength="100" required>
+    <p><input type="text" name="lastName" placeholder="lastName" value="${user.lastName}" maxlength="20" required>
+    <p><input type="number" name="age" placeholder="age" value="${user.age}" required>
     <p>
         <c:set value="add" var="add"/>
         <c:set value="edit" var="edit"/>
