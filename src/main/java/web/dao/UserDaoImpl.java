@@ -26,9 +26,10 @@ public class UserDaoImpl implements UserDao {
     @Override
     @SuppressWarnings("unchecked")
     public List<User> allUsers(int page) {
-      Session session = em.unwrap(Session.class);
+     //Session session = em.unwrap(Session.class);
        // Session session = sessionFactory.getCurrentSession();
-        return session.createQuery("from User").setFirstResult(10 * (page - 1)).setMaxResults(10).list();
+        //return session.createQuery("from User").setFirstResult(10 * (page - 1)).setMaxResults(10).list();
+        return em.createQuery("from User").setFirstResult(10 * (page - 1)).setMaxResults(10).getResultList();
     }
 
     @Override
