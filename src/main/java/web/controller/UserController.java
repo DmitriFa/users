@@ -50,7 +50,7 @@ public class UserController {
             modelAndView.addObject("page", page);
             userService.add(user);
        } else {
-           modelAndView.addObject("message","part with name \"" + user.getLastName() + "\" already exists");
+           modelAndView.addObject("message","part with lastName \"" + user.getLastName() + "\" already exists");
            modelAndView.setViewName("redirect:/");
       }
         return modelAndView;
@@ -74,7 +74,7 @@ public class UserController {
             modelAndView.addObject("page", page);
             userService.edit(user);
         } else {
-            modelAndView.addObject("message","part with name \"" + user.getLastName() + "\" already exists");
+            modelAndView.addObject("message","part with lastName \"" + user.getLastName() + "\" already exists");
             modelAndView.setViewName("redirect:/edit/" +  + user.getId());
         }
         return modelAndView;
