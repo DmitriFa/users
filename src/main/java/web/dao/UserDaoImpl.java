@@ -33,24 +33,27 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void add(User user) {
-       Session session = em.unwrap(Session.class);
+    //   Session session = em.unwrap(Session.class);
   // Session session = sessionFactory.getCurrentSession();
-      session.persist(user);
+     // session.persist(user);
+        em.persist(user);
     }
 
     @Override
     public void delete(User user){
       // Session session = sessionFactory.getCurrentSession();
-      Session session = em.unwrap(Session.class);
-       session.delete(user);
+      //Session session = em.unwrap(Session.class);
+      // session.delete(getById(user.getId()));
+       em.remove(getById(user.getId()));
 
     }
 
     @Override
     public void edit(User user) {
       // Session session = sessionFactory.getCurrentSession();
-      Session session = em.unwrap(Session.class);
-        session.update(user);
+     // Session session = em.unwrap(Session.class);
+      //  session.update(user);
+        em.merge(user);
     }
 
     @Override
