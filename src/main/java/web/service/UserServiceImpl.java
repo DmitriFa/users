@@ -56,7 +56,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public boolean checkTitle(String title) {
-        return userDao.checkTitle(title);
+    public boolean checkTitle(String name) {
+        return userDao.checkTitle(name);
     }
 }

@@ -45,14 +45,14 @@ public class UserController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ModelAndView addUser(@ModelAttribute("user") User user) {
         ModelAndView modelAndView = new ModelAndView();
-        if (userService.checkTitle(user.getName())) {
+        if (userService.checkTitle(user.getLastName())) {
             modelAndView.setViewName("redirect:/");
             modelAndView.addObject("page", page);
             userService.add(user);
-        } else {
-            modelAndView.addObject("message","part with title \"" + user.getName() + "\" already exists");
-            modelAndView.setViewName("redirect:/");
-        }
+       } else {
+           modelAndView.addObject("message","part with name \"" + user.getLastName() + "\" already exists");
+           modelAndView.setViewName("redirect:/");
+      }
         return modelAndView;
     }
 
@@ -69,12 +69,12 @@ public class UserController {
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public ModelAndView editUser(@ModelAttribute("user") User user) {
         ModelAndView modelAndView = new ModelAndView();
-        if (userService.checkTitle(user.getName()) || userService.getById(user.getId()).getName().equals(user.getName())) {
+        if (userService.checkTitle(user.getLastName()) || userService.getById(user.getId()).getLastName().equals(user.getLastName())) {
             modelAndView.setViewName("redirect:/");
             modelAndView.addObject("page", page);
             userService.edit(user);
         } else {
-            modelAndView.addObject("message","part with title \"" + user.getName() + "\" already exists");
+            modelAndView.addObject("message","part with name \"" + user.getLastName() + "\" already exists");
             modelAndView.setViewName("redirect:/edit/" +  + user.getId());
         }
         return modelAndView;
@@ -85,7 +85,7 @@ public class UserController {
         ModelAndView modelAndView = new ModelAndView();
         int usersCount = userService.usersCount();
         int page = ((usersCount - 1) % 10 == 0 && usersCount > 10 && this.page == (usersCount + 9)/10) ?
-                this.page - 1 : this.page;
+               this.page - 1 : this.page;
         modelAndView.setViewName("redirect:/");
         modelAndView.addObject("page", page);
         User user = userService.getById(id);

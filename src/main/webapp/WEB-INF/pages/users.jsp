@@ -9,16 +9,16 @@
     <caption>Пользователи</caption>
     <tr>
         <th>№</th>
-        <th>Имя</th>
         <th>Фамилия</th>
+        <th>Имя</th>
         <th>Возраст</th>
         <th colspan="2">action</th>
     </tr>
     <c:forEach var="user" items="${usersList}" varStatus="i">
         <tr>
             <td>${i.index + 1 + (page - 1) * 10}</td>
-            <td>${user.name}</td>
             <td>${user.lastName}</td>
+            <td>${user.name}</td>
             <td>${user.age}</td>
             <td><a href="<c:url value="/edit/${user.id}"/>">edit</a></td>
             <td><a href="<c:url value="/delete/${user.id}"/>">delete</a></td>
