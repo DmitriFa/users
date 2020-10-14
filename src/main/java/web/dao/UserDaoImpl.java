@@ -13,12 +13,12 @@ import java.util.List;
 
 @Repository
 public class UserDaoImpl implements UserDao {
-   // private SessionFactory sessionFactory;
+  // private SessionFactory sessionFactory;
 
- //   @Autowired
- //  public void setSessionFactory(SessionFactory sessionFactory) {
+  //  @Autowired
+ // public void setSessionFactory(SessionFactory sessionFactory) {
   //    this.sessionFactory = sessionFactory;
-  //}
+ //}
 
    @PersistenceContext
    EntityManager em;
@@ -27,14 +27,14 @@ public class UserDaoImpl implements UserDao {
     @SuppressWarnings("unchecked")
     public List<User> allUsers(int page) {
       Session session = em.unwrap(Session.class);
-      //  Session session = sessionFactory.getCurrentSession();
+       // Session session = sessionFactory.getCurrentSession();
         return session.createQuery("from User").setFirstResult(10 * (page - 1)).setMaxResults(10).list();
     }
 
     @Override
     public void add(User user) {
        Session session = em.unwrap(Session.class);
-   // Session session = sessionFactory.getCurrentSession();
+  // Session session = sessionFactory.getCurrentSession();
       session.persist(user);
     }
 
@@ -62,18 +62,18 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public int usersCount() {
-     //  Session session = sessionFactory.getCurrentSession();
+      //Session session = sessionFactory.getCurrentSession();
        Session session = em.unwrap(Session.class);
         return session.createQuery("select count(*) from User", Number.class).getSingleResult().intValue();
     }
 
     @Override
-    public boolean checkTitle(String name) {
-   //  Session session = sessionFactory.getCurrentSession();
+    public boolean checkTitle(String lastName) {
+    // Session session = sessionFactory.getCurrentSession();
      Session session = em.unwrap(Session.class);
         Query query;
-        query = session.createQuery("from User where name = :name");
-        query.setParameter("name", name);
+        query = session.createQuery("from User where lastName = :lastName");
+        query.setParameter("lastName", lastName);
         return query.list().isEmpty();
     }
 }

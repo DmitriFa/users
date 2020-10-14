@@ -6,6 +6,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
+          <factory-entry name="2.3.1" value="becb72ce-fa4e-4ad1-9059-c5a912abda11" />
           <factory-entry name="entityManagerFactory" value="becb72ce-fa4e-4ad1-9059-c5a912abda11" />
           <factory-entry name="filmography" />
         </datasource-mapping>

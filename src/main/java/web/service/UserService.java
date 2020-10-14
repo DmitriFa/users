@@ -12,5 +12,5 @@ public interface UserService {
     void edit(User user);
     User getById(int id);
     int usersCount();
-    boolean checkTitle(String name);
+    boolean checkTitle(String lastName);
 }
